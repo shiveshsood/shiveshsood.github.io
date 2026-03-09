@@ -5,7 +5,7 @@ const writings = [
     url: "https://store.hbr.org/product/ai-development-guide-assistants-a/826136",
   },
   {
-    title: "The Deep Tea",
+    title: "The Deep Tea (Substack Newsletter)",
     date: "2024 – Present",
     url: "https://thedeeptea.substack.com/",
   },

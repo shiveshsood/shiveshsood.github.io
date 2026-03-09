@@ -20,7 +20,7 @@ export function Nav() {
           href="/"
           className="hidden xs:block font-display text-neutral-900 text-sm mb-4 text-right"
         >
-          Shivesh Sood
+          shivesh.me
         </Link>
         <menu className="flex flex-wrap justify-end gap-4 xs:flex-col xs:justify-start xs:gap-1 xs:text-right">
           {links.map((link) => {

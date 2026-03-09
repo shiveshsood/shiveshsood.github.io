@@ -18,11 +18,11 @@ export function Nav() {
       <div className="xs:sticky xs:top-6 sm:top-12 md:top-24">
         <Link
           href="/"
-          className="block font-display text-neutral-900 text-sm mb-4 xs:text-right"
+          className="font-display text-neutral-900 text-sm mr-4 xs:mr-0 xs:block xs:mb-4 xs:text-right"
         >
           shivesh.me
         </Link>
-        <menu className="flex flex-wrap justify-end gap-4 xs:flex-col xs:justify-start xs:gap-1 xs:text-right">
+        <menu className="inline-flex flex-wrap gap-4 xs:flex xs:flex-col xs:justify-start xs:gap-1 xs:text-right">
           {links.map((link) => {
             const isActive =
               link.href === "/"

@@ -18,7 +18,7 @@ export function Nav() {
       <div className="xs:sticky xs:top-6 sm:top-12 md:top-24">
         <Link
           href="/"
-          className="hidden xs:block font-display text-neutral-900 text-sm mb-4 text-right"
+          className="block font-display text-neutral-900 text-sm mb-4 xs:text-right"
         >
           shivesh.me
         </Link>

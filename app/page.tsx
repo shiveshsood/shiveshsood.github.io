@@ -62,22 +62,6 @@ export default function Home() {
         >
           LinkedIn
         </a>
-        <a
-          href="https://github.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2 transition-colors hover:text-neutral-500"
-        >
-          GitHub
-        </a>
-        <a
-          href="https://twitter.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2 transition-colors hover:text-neutral-500"
-        >
-          Twitter
-        </a>
       </div>
     </>
   );

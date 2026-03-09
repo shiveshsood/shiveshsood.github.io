@@ -84,8 +84,8 @@ export default function CV() {
         <div className="flex flex-col gap-4">
           {workExperience.map((entry) => (
             <div key={entry.company}>
-              <div className="flex items-center justify-between gap-x-2 text-sm">
-                <h3 className="inline-flex items-center gap-x-1.5 font-semibold text-neutral-900 leading-none">
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 text-sm">
+                <h3 className="font-semibold text-neutral-900 leading-none">
                   {entry.url ? (
                     <a
                       href={entry.url}
@@ -98,11 +98,11 @@ export default function CV() {
                   ) : (
                     entry.company
                   )}
-                  <span className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-700">
-                    {entry.location}
-                  </span>
                 </h3>
-                <div className="text-sm tabular-nums text-neutral-500 shrink-0">
+                <span className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-700">
+                  {entry.location}
+                </span>
+                <div className="text-sm tabular-nums text-neutral-500 ml-auto shrink-0">
                   {entry.date}
                 </div>
               </div>

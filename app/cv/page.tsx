@@ -54,7 +54,6 @@ const education = [
   },
   {
     school: "M.S. Ramaiah Institute of Technology",
-    date: "Jun 2019",
     degree: "B.E., Electronics & Instrumentation",
   },
 ];
@@ -130,9 +129,11 @@ export default function CV() {
                 <h3 className="font-semibold text-neutral-900 leading-none">
                   {entry.school}
                 </h3>
-                <div className="text-sm tabular-nums text-neutral-500 shrink-0">
-                  {entry.date}
-                </div>
+                {entry.date && (
+                  <div className="text-sm tabular-nums text-neutral-500 shrink-0">
+                    {entry.date}
+                  </div>
+                )}
               </div>
               <p className="font-mono text-sm text-neutral-800 mt-1.5">
                 {entry.degree}

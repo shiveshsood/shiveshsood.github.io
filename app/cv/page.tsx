@@ -110,7 +110,7 @@ export default function CV() {
               <h4 className="font-mono text-sm leading-none text-neutral-800 mt-1.5">
                 {entry.title}
               </h4>
-              <p className="text-xs text-neutral-600 mt-2 leading-relaxed">
+              <p className="text-xs text-neutral-700 mt-2 leading-relaxed">
                 {entry.description}
               </p>
             </div>
@@ -138,7 +138,7 @@ export default function CV() {
                 {entry.degree}
               </p>
               {entry.focus && (
-                <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
+                <p className="text-xs text-neutral-700 mt-1 leading-relaxed">
                   {entry.focus}
                 </p>
               )}

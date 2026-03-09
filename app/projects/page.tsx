@@ -89,7 +89,7 @@ export default function Projects() {
             </div>
 
             {/* Description */}
-            <p className="text-xs text-neutral-600 leading-relaxed mb-4">
+            <p className="text-xs text-neutral-700 leading-relaxed mb-4">
               {project.description}
             </p>
 

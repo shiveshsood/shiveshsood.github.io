@@ -14,7 +14,8 @@ const writings = [
 export default function Writing() {
   return (
     <>
-      <div className="mb-8 space-y-1">
+      <h2 className="font-display text-lg text-neutral-900 mb-6">Writing</h2>
+      <div className="mb-8 space-y-4">
         <p>
           I write to make sense of the systems shaping our world — technology,
           culture, and the quiet forces between them.

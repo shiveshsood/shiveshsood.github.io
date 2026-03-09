@@ -35,7 +35,7 @@ export default function Home() {
             href="https://www.gsd.harvard.edu/master-in-design-engineering/"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline transition-colors hover:text-black"
+            className="underline underline-offset-2 transition-colors hover:text-neutral-500"
           >
             Master&apos;s in Design Engineering
           </a>{" "}
@@ -50,7 +50,7 @@ export default function Home() {
       <div className="flex flex-wrap gap-4">
         <a
           href="mailto:shivesh.sood@gmail.com"
-          className="underline transition-colors hover:text-black"
+          className="underline underline-offset-2 transition-colors hover:text-neutral-500"
         >
           Email
         </a>
@@ -58,7 +58,7 @@ export default function Home() {
           href="https://linkedin.com/in/shiveshsood"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline transition-colors hover:text-black"
+          className="underline underline-offset-2 transition-colors hover:text-neutral-500"
         >
           LinkedIn
         </a>
@@ -66,7 +66,7 @@ export default function Home() {
           href="https://github.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline transition-colors hover:text-black"
+          className="underline underline-offset-2 transition-colors hover:text-neutral-500"
         >
           GitHub
         </a>
@@ -74,7 +74,7 @@ export default function Home() {
           href="https://twitter.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline transition-colors hover:text-black"
+          className="underline underline-offset-2 transition-colors hover:text-neutral-500"
         >
           Twitter
         </a>

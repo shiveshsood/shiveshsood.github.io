@@ -52,7 +52,7 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={`${sourceSerif.variable} ${instrumentSerif.variable} ${ibmPlexMono.variable} font-serif text-sm text-neutral-800 antialiased`}
+          className={`${sourceSerif.variable} ${instrumentSerif.variable} ${ibmPlexMono.variable} font-serif text-sm text-neutral-900 antialiased`}
         >
           <div className="flex flex-col xs:flex-row bg-neutral-50 min-h-screen p-4 pb-12 xs:p-6 sm:p-12 md:p-24">
             <Nav />

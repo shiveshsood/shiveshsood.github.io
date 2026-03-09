@@ -79,38 +79,38 @@ export default function CV() {
     <div className="text-left">
       {/* Work Experience */}
       <section>
-        <h2 className="font-serif text-lg font-bold text-neutral-900 mb-6">
+        <h2 className="font-display text-lg text-neutral-900 mb-6">
           Work Experience
         </h2>
         <div className="flex flex-col gap-4">
           {workExperience.map((entry) => (
             <div key={entry.company}>
               <div className="flex items-center justify-between gap-x-2 text-sm">
-                <h3 className="inline-flex items-center gap-x-1.5 font-serif font-semibold text-neutral-900 leading-none">
+                <h3 className="inline-flex items-center gap-x-1.5 font-semibold text-neutral-900 leading-none">
                   {entry.url ? (
                     <a
                       href={entry.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline transition-colors hover:text-black"
+                      className="underline underline-offset-2 transition-colors hover:text-neutral-500"
                     >
                       {entry.company}
                     </a>
                   ) : (
                     entry.company
                   )}
-                  <span className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-800">
+                  <span className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-700">
                     {entry.location}
                   </span>
                 </h3>
-                <div className="text-sm tabular-nums text-neutral-400 shrink-0">
+                <div className="text-sm tabular-nums text-neutral-500 shrink-0">
                   {entry.date}
                 </div>
               </div>
-              <h4 className="font-mono text-sm leading-none text-neutral-900 mt-1.5">
+              <h4 className="font-mono text-sm leading-none text-neutral-800 mt-1.5">
                 {entry.title}
               </h4>
-              <p className="font-mono text-xs text-neutral-400 mt-2">
+              <p className="text-xs text-neutral-600 mt-2 leading-relaxed">
                 {entry.description}
               </p>
             </div>
@@ -120,17 +120,17 @@ export default function CV() {
 
       {/* Education */}
       <section className="mt-10">
-        <h2 className="font-serif text-lg font-bold text-neutral-900 mb-6">
+        <h2 className="font-display text-lg text-neutral-900 mb-6">
           Education
         </h2>
         <div className="flex flex-col gap-4">
           {education.map((entry) => (
             <div key={entry.school}>
               <div className="flex items-center justify-between gap-x-2 text-sm">
-                <h3 className="font-serif font-semibold text-neutral-900 leading-none">
+                <h3 className="font-semibold text-neutral-900 leading-none">
                   {entry.school}
                 </h3>
-                <div className="text-sm tabular-nums text-neutral-400 shrink-0">
+                <div className="text-sm tabular-nums text-neutral-500 shrink-0">
                   {entry.date}
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function CV() {
                 {entry.degree}
               </p>
               {entry.focus && (
-                <p className="font-mono text-xs text-neutral-400 mt-1">
+                <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
                   {entry.focus}
                 </p>
               )}
@@ -149,14 +149,14 @@ export default function CV() {
 
       {/* Skills */}
       <section className="mt-10">
-        <h2 className="font-serif text-lg font-bold text-neutral-900 mb-6">
+        <h2 className="font-display text-lg text-neutral-900 mb-6">
           Skills
         </h2>
         <div className="flex flex-wrap gap-2">
           {skills.map((skill) => (
             <span
               key={skill}
-              className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-800"
+              className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-700"
             >
               {skill}
             </span>

@@ -8,12 +8,12 @@
   --color-neutral-150: #f0eeea;
   --color-neutral-200: #e8e6dc;
   --color-neutral-300: #d4d1c5;
-  --color-neutral-400: #85837a;
-  --color-neutral-500: #706e66;
-  --color-neutral-600: #5c5a53;
-  --color-neutral-700: #474541;
-  --color-neutral-800: #302e2c;
-  --color-neutral-900: #1f1e1d;
+  --color-neutral-400: #7a7870;
+  --color-neutral-500: #62605a;
+  --color-neutral-600: #4d4b46;
+  --color-neutral-700: #3a3835;
+  --color-neutral-800: #2a2826;
+  --color-neutral-900: #1a1918;
 
   --font-serif: var(--font-source-serif);
   --font-display: var(--font-instrument-serif);

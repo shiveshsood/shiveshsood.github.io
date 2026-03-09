@@ -1,3 +1,3 @@
-export default function Thoughts() {
-  return <p className="text-neutral-400">Coming soon.</p>;
+export default function Writing() {
+  return <p className="text-neutral-500">Coming soon.</p>;
 }

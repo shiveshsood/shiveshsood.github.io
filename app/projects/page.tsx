@@ -57,7 +57,7 @@ const projects = [
 export default function Projects() {
   return (
     <>
-      <h2 className="text-lg font-bold text-neutral-900 mb-6">Projects</h2>
+      <h2 className="font-display text-lg text-neutral-900 mb-6">Projects</h2>
       <div className="flex flex-col gap-10">
         {projects.map((project) => (
           <div key={project.title}>
@@ -67,11 +67,11 @@ export default function Projects() {
                 <h3 className="font-semibold text-neutral-900 text-sm">
                   {project.title}
                 </h3>
-                <span className="font-mono text-xs font-medium text-neutral-800 bg-neutral-150 rounded-md px-2 py-0.5">
+                <span className="font-mono text-xs font-medium text-neutral-700 bg-neutral-150 rounded-md px-2 py-0.5">
                   {project.category}
                 </span>
               </div>
-              <span className="text-sm text-neutral-400 tabular-nums shrink-0">
+              <span className="text-sm text-neutral-500 tabular-nums shrink-0">
                 {project.date}
               </span>
             </div>
@@ -81,7 +81,7 @@ export default function Projects() {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-xs text-neutral-400"
+                  className="font-mono text-xs text-neutral-500"
                 >
                   {tag}
                 </span>
@@ -89,7 +89,7 @@ export default function Projects() {
             </div>
 
             {/* Description */}
-            <p className="font-mono text-xs text-neutral-400 leading-relaxed mb-4">
+            <p className="text-xs text-neutral-600 leading-relaxed mb-4">
               {project.description}
             </p>
 
@@ -100,7 +100,7 @@ export default function Projects() {
                   href={project.link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-neutral-900 underline underline-offset-2 decoration-neutral-900 transition-colors hover:text-neutral-600 hover:decoration-neutral-600"
+                  className="inline-flex items-center gap-1 text-sm font-semibold text-neutral-900 underline underline-offset-2 transition-colors hover:text-neutral-500"
                 >
                   {project.link.label}
                   <span className="text-xs">&#x2197;</span>

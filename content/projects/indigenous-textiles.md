@@ -7,7 +7,10 @@ tags:
   - "Keras"
   - "Image Recognition"
 date: "October 2022"
-image: "/projects/indigenous-textiles.png"
+images:
+  - "/projects/indigenous-textiles.png"
+videos:
+  - "https://drive.google.com/file/d/1hUfCl1k43CD7fMcbRTp3dJELOTxe5iR9/preview"
 link:
   label: "Watch Video"
   url: "https://drive.google.com/file/d/1hUfCl1k43CD7fMcbRTp3dJELOTxe5iR9/view?usp=sharing"

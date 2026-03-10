@@ -3,17 +3,19 @@
 import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
+import type { MediaItem } from "@/lib/content";
 
 interface ProjectSlideshowProps {
-  images: string[];
+  media: MediaItem[];
   alt: string;
 }
 
-export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
+export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
   const [index, setIndex] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const total = images.length;
+  const total = media.length;
   const single = total <= 1;
+  const current = media[index];
 
   const prev = useCallback(
     () => setIndex((i) => (i - 1 + total) % total),
@@ -45,17 +47,29 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
   return (
     <>
       <div className="rounded-sm overflow-hidden border border-neutral-200 relative group">
-        {/* Current image */}
-        <Image
-          src={images[index]}
-          alt={`${alt} — ${index + 1} of ${total}`}
-          width={1000}
-          height={600}
-          className="w-full h-auto cursor-pointer"
-          onClick={() => setLightboxOpen(true)}
-        />
+        {/* Current slide */}
+        {current.type === "image" ? (
+          <Image
+            src={current.src}
+            alt={`${alt} — ${index + 1} of ${total}`}
+            width={1000}
+            height={600}
+            className="w-full h-auto cursor-pointer"
+            onClick={() => setLightboxOpen(true)}
+          />
+        ) : (
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src={current.src}
+              title={`${alt} — video`}
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+          </div>
+        )}
 
-        {/* Navigation arrows — visible on hover when multiple images */}
+        {/* Navigation arrows — visible on hover when multiple */}
         {!single && (
           <>
             <button
@@ -64,7 +78,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
                 prev();
               }}
               className="absolute left-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-7 h-7 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white"
-              aria-label="Previous image"
+              aria-label="Previous"
             >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path
@@ -82,7 +96,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
                 next();
               }}
               className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-7 h-7 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white"
-              aria-label="Next image"
+              aria-label="Next"
             >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path
@@ -100,7 +114,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
         {/* Dot indicators */}
         {!single && (
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {images.map((_, i) => (
+            {media.map((_, i) => (
               <button
                 key={i}
                 onClick={(e) => {
@@ -112,7 +126,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
                     ? "bg-neutral-800 scale-110"
                     : "bg-neutral-400/60 hover:bg-neutral-500"
                 }`}
-                aria-label={`Go to image ${i + 1}`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
@@ -126,8 +140,9 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
         )}
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox — images only (videos play inline) */}
       {lightboxOpen &&
+        current.type === "image" &&
         createPortal(
           <div
             className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
@@ -138,7 +153,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
               onClick={(e) => e.stopPropagation()}
             >
               <Image
-                src={images[index]}
+                src={current.src}
                 alt={`${alt} — ${index + 1} of ${total}`}
                 width={2000}
                 height={1200}
@@ -151,14 +166,9 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
                   <button
                     onClick={prev}
                     className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-9 h-9 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white transition-colors"
-                    aria-label="Previous image"
+                    aria-label="Previous"
                   >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                    >
+                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                       <path
                         d="M7.5 2.5L4 6l3.5 3.5"
                         stroke="currentColor"
@@ -171,14 +181,9 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
                   <button
                     onClick={next}
                     className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-9 h-9 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white transition-colors"
-                    aria-label="Next image"
+                    aria-label="Next"
                   >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                    >
+                    <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                       <path
                         d="M4.5 2.5L8 6l-3.5 3.5"
                         stroke="currentColor"
@@ -194,7 +199,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
               {/* Lightbox dots */}
               {!single && (
                 <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-                  {images.map((_, i) => (
+                  {media.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setIndex(i)}
@@ -203,7 +208,7 @@ export function ProjectSlideshow({ images, alt }: ProjectSlideshowProps) {
                           ? "bg-white scale-110"
                           : "bg-white/40 hover:bg-white/70"
                       }`}
-                      aria-label={`Go to image ${i + 1}`}
+                      aria-label={`Go to slide ${i + 1}`}
                     />
                   ))}
                 </div>

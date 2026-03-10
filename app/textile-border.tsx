@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 
 const PATTERNS = ["/patterns/kullu-patti-1.png", "/patterns/kullu-patti-2.png"];
 
@@ -9,6 +9,14 @@ export function TextileBorder() {
   const [visible, setVisible] = useState(false);
   const [patternIndex, setPatternIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Preload all pattern images so switching is instant
+  useEffect(() => {
+    for (const src of PATTERNS) {
+      const img = new Image();
+      img.src = src;
+    }
+  }, []);
 
   const handleMouseEnter = useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);

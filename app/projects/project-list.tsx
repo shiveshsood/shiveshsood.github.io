@@ -42,15 +42,40 @@ export function ProjectList({ projects }: ProjectListProps) {
               ))}
             </div>
 
+            {/* Media — slideshow when multiple, single lightbox otherwise */}
+            {project.media.length > 1 ? (
+              <ProjectSlideshow media={project.media} alt={project.title} />
+            ) : project.media.length === 1 && project.media[0].type === "image" ? (
+              <div className="rounded-sm overflow-hidden border border-neutral-200">
+                <ImageLightbox
+                  src={project.media[0].src}
+                  alt={project.title}
+                  width={1000}
+                  height={600}
+                  className="w-full h-auto"
+                />
+              </div>
+            ) : project.media.length === 1 && project.media[0].type === "video" ? (
+              <div className="rounded-sm overflow-hidden border border-neutral-200 relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  src={project.media[0].src}
+                  title={`${project.title} — video`}
+                  className="absolute inset-0 w-full h-full"
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              </div>
+            ) : null}
+
             {/* Description */}
             <div
-              className="text-xs text-neutral-700 leading-relaxed mb-4 prose-project"
+              className="text-xs text-neutral-700 leading-relaxed mt-4 prose-project"
               dangerouslySetInnerHTML={{ __html: project.descriptionHtml }}
             />
 
             {/* Link */}
             {project.link && (
-              <div className="mb-4">
+              <div className="mt-3">
                 <a
                   href={project.link.url}
                   target="_blank"
@@ -62,21 +87,6 @@ export function ProjectList({ projects }: ProjectListProps) {
                 </a>
               </div>
             )}
-
-            {/* Images — slideshow when multiple, single lightbox otherwise */}
-            {project.images.length > 1 ? (
-              <ProjectSlideshow images={project.images} alt={project.title} />
-            ) : project.images.length === 1 ? (
-              <div className="rounded-sm overflow-hidden border border-neutral-200">
-                <ImageLightbox
-                  src={project.images[0]}
-                  alt={project.title}
-                  width={1000}
-                  height={600}
-                  className="w-full h-auto"
-                />
-              </div>
-            ) : null}
           </div>
         ))}
       </div>

@@ -63,12 +63,17 @@ export interface ProjectLink {
   url: string;
 }
 
+export interface MediaItem {
+  type: "image" | "video";
+  src: string;
+}
+
 export interface Project {
   title: string;
   category: string;
   tags: string[];
   date: string;
-  images: string[];
+  media: MediaItem[];
   link?: ProjectLink;
   order: number;
   descriptionHtml: string;
@@ -141,19 +146,28 @@ export async function getProjects(): Promise<Project[]> {
       const descriptionHtml = await renderMarkdown(content);
       const slug = filename.replace(/\.md$/, "");
 
-      // Support both `image` (string) and `images` (array) in frontmatter
-      const images: string[] = data.images
+      // Build media array from frontmatter: images, image, and videos fields
+      const media: MediaItem[] = [];
+      const imgs: string[] = data.images
         ? (data.images as string[])
         : data.image
           ? [data.image as string]
           : [];
+      for (const src of imgs) {
+        media.push({ type: "image", src });
+      }
+      if (data.videos) {
+        for (const src of data.videos as string[]) {
+          media.push({ type: "video", src });
+        }
+      }
 
       return {
         title: data.title,
         category: data.category,
         tags: data.tags as string[],
         date: data.date,
-        images,
+        media,
         link: data.link as ProjectLink | undefined,
         order: data.order as number,
         descriptionHtml,

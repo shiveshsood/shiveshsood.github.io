@@ -1,33 +1,18 @@
-const writings = [
-  {
-    title: "AI Development Guide: Assistants",
-    date: "Jan 2026",
-    url: "https://store.hbr.org/product/ai-development-guide-assistants-a/826136",
-  },
-  {
-    title: "The Deep Tea (Substack Newsletter)",
-    date: "2024 – Present",
-    url: "https://thedeeptea.substack.com/",
-  },
-];
+import { getWritingData } from "@/lib/content";
 
-export default function Writing() {
+export default async function Writing() {
+  const writing = await getWritingData();
+
   return (
     <>
       <h2 className="font-display text-lg text-neutral-900 mb-6">Writing</h2>
-      <div className="mb-8 space-y-4">
-        <p>
-          I write to make sense of the systems shaping our world — technology,
-          culture, and the quiet forces between them.
-        </p>
-        <p>
-          Most of it lives at the intersection of deep tech and human-centered
-          thinking.
-        </p>
-      </div>
+      <div
+        className="mb-8 space-y-4 prose-writing"
+        dangerouslySetInnerHTML={{ __html: writing.introHtml }}
+      />
 
       <div className="space-y-1">
-        {writings.map((entry) => (
+        {writing.writings.map((entry) => (
           <a
             key={entry.title}
             href={entry.url}

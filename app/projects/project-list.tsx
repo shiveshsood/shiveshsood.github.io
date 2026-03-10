@@ -1,6 +1,7 @@
 "use client";
 
 import { ImageLightbox } from "../components/image-lightbox";
+import { ProjectSlideshow } from "../components/project-slideshow";
 import type { Project } from "@/lib/content";
 
 interface ProjectListProps {
@@ -62,16 +63,20 @@ export function ProjectList({ projects }: ProjectListProps) {
               </div>
             )}
 
-            {/* Image */}
-            <div className="rounded-sm overflow-hidden border border-neutral-200">
-              <ImageLightbox
-                src={project.image}
-                alt={project.title}
-                width={1000}
-                height={600}
-                className="w-full h-auto"
-              />
-            </div>
+            {/* Images — slideshow when multiple, single lightbox otherwise */}
+            {project.images.length > 1 ? (
+              <ProjectSlideshow images={project.images} alt={project.title} />
+            ) : project.images.length === 1 ? (
+              <div className="rounded-sm overflow-hidden border border-neutral-200">
+                <ImageLightbox
+                  src={project.images[0]}
+                  alt={project.title}
+                  width={1000}
+                  height={600}
+                  className="w-full h-auto"
+                />
+              </div>
+            ) : null}
           </div>
         ))}
       </div>

@@ -68,7 +68,7 @@ export interface Project {
   category: string;
   tags: string[];
   date: string;
-  image: string;
+  images: string[];
   link?: ProjectLink;
   order: number;
   descriptionHtml: string;
@@ -141,12 +141,19 @@ export async function getProjects(): Promise<Project[]> {
       const descriptionHtml = await renderMarkdown(content);
       const slug = filename.replace(/\.md$/, "");
 
+      // Support both `image` (string) and `images` (array) in frontmatter
+      const images: string[] = data.images
+        ? (data.images as string[])
+        : data.image
+          ? [data.image as string]
+          : [];
+
       return {
         title: data.title,
         category: data.category,
         tags: data.tags as string[],
         date: data.date,
-        image: data.image,
+        images,
         link: data.link as ProjectLink | undefined,
         order: data.order as number,
         descriptionHtml,

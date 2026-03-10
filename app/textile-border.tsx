@@ -2,9 +2,12 @@
 
 import { useRef, useState, useCallback } from "react";
 
+const PATTERNS = ["/patterns/kullu-patti-1.png", "/patterns/kullu-patti-2.png"];
+
 export function TextileBorder() {
   const [mouseY, setMouseY] = useState<number | null>(null);
   const [visible, setVisible] = useState(false);
+  const [patternIndex, setPatternIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = useCallback(() => {
@@ -22,17 +25,22 @@ export function TextileBorder() {
     setMouseY(null);
   }, []);
 
+  const handleClick = useCallback(() => {
+    setPatternIndex((i) => (i + 1) % PATTERNS.length);
+  }, []);
+
   return (
     <div
       className="hidden sm:block absolute top-0 bottom-0 right-0 w-[80px] md:w-[96px] z-50 cursor-pointer"
       style={{
-        backgroundImage: "url(/border-pattern.png)",
+        backgroundImage: `url(${PATTERNS[patternIndex]})`,
         backgroundRepeat: "repeat-y",
         backgroundSize: "100% auto",
       }}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
     >
       <div className="relative h-full">
         {mouseY !== null && (
@@ -57,7 +65,7 @@ export function TextileBorder() {
               <div className="absolute top-0 left-3 right-3 h-[2px] rounded-full overflow-hidden flex gap-[1px]">
                 <div className="flex-1 bg-[#C62828] rounded-full" />
                 <div className="flex-1 bg-[#DAA520] rounded-full" />
-                <div className="flex-1 bg-[#1B5E20] rounded-full" />
+                <div className="flex-1 bg-[#1a6bb5] rounded-full" />
                 <div className="flex-1 bg-[#DAA520] rounded-full" />
                 <div className="flex-1 bg-[#C62828] rounded-full" />
               </div>

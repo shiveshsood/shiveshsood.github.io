@@ -16,7 +16,7 @@ export default function Home() {
       </div>
 
       {/* Name */}
-      <h1 className="mb-8 text-left font-display font-medium text-neutral-900 text-sm">
+      <h1 className="mb-4 text-left font-display font-medium text-neutral-900 text-sm">
         Shivesh Sood
       </h1>
 

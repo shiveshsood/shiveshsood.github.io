@@ -78,6 +78,9 @@ export function TextileBorder() {
                 , a centuries-old design tradition from my ancestral hometown in
                 the middle Himalayas.
               </p>
+              <p className="text-[13px] leading-[1.6] font-serif mt-1.5">
+                Click to explore.
+              </p>
             </div>
           </div>
         )}

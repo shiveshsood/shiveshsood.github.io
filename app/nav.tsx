@@ -17,11 +17,12 @@ export function Nav() {
     <nav className="sticky top-0 z-40 bg-neutral-50 -mx-4 -mt-4 px-4 mb-8 border-b border-neutral-200 pb-4 text-base leading-5 xs:static xs:mx-0 xs:mt-0 xs:px-0 xs:z-auto xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 sm:mr-8 md:mr-12">
       {/* Mobile patti strip */}
       <div
-        className="xs:hidden h-2 -mx-4 mb-3"
+        className="xs:hidden h-4 -mx-4 mb-3 overflow-hidden"
         style={{
           backgroundImage: "url(/patterns/kullu-patti-1.png)",
           backgroundRepeat: "repeat-x",
-          backgroundSize: "auto 100%",
+          backgroundSize: "48px auto",
+          backgroundPosition: "left center",
         }}
       />
       <div className="flex items-baseline justify-between xs:block xs:sticky xs:top-6 sm:top-12 md:top-24">

@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useCallback, useEffect } from "react";
-import { createPortal } from "react-dom";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 interface ImageLightboxProps {
   src: string;
@@ -23,40 +23,40 @@ export function ImageLightbox({
   locked = false,
   priority = false,
 }: ImageLightboxProps) {
-  const [open, setOpen] = useState(false);
-
-  const close = useCallback(() => setOpen(false), []);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-    };
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open, close]);
-
-  return (
-    <>
+  if (locked) {
+    return (
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        className={`${className} ${locked ? "" : "cursor-pointer"}`}
+        className={className}
         priority={priority}
-        onClick={() => !locked && setOpen(true)}
       />
-      {open &&
-        createPortal(
-          <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm cursor-pointer"
-            onClick={close}
-          >
+    );
+  }
+
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button type="button" className="cursor-pointer">
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            className={className}
+            priority={priority}
+          />
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm" />
+        <Dialog.Content className="fixed inset-0 z-[9999] flex items-center justify-center cursor-pointer">
+          <VisuallyHidden.Root>
+            <Dialog.Title>Enlarged view: {alt}</Dialog.Title>
+          </VisuallyHidden.Root>
+          <Dialog.Close asChild>
             <div className="relative max-w-[90vw] max-h-[90vh]">
               <Image
                 src={src}
@@ -66,9 +66,9 @@ export function ImageLightbox({
                 className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-sm"
               />
             </div>
-          </div>,
-          document.body
-        )}
-    </>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

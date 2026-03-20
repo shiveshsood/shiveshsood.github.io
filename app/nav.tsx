@@ -14,7 +14,7 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-40 bg-neutral-50 -mx-4 -mt-4 px-4 mb-8 border-b border-neutral-200 pb-4 text-base leading-5 xs:static xs:mx-0 xs:mt-0 xs:px-0 xs:z-auto xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 sm:mr-8 md:mr-12">
+    <nav aria-label="Main navigation" className="sticky top-0 z-40 bg-neutral-50 -mx-4 -mt-4 px-4 mb-8 border-b border-neutral-200 pb-4 text-base leading-5 xs:static xs:mx-0 xs:mt-0 xs:px-0 xs:z-auto xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 sm:mr-8 md:mr-12">
       {/* Mobile patti strip */}
       <div
         className="xs:hidden h-4 -mx-4 mb-3 overflow-hidden"
@@ -32,7 +32,7 @@ export function Nav() {
         >
           shivesh.me
         </Link>
-        <menu className="flex flex-wrap justify-end gap-4 xs:flex-col xs:justify-start xs:gap-1 xs:text-right">
+        <ul className="flex flex-wrap justify-end gap-4 xs:flex-col xs:justify-start xs:gap-1 xs:text-right">
           {links.map((link) => {
             const isActive =
               link.href === "/"
@@ -42,6 +42,7 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  aria-current={isActive ? "page" : undefined}
                   data-active={isActive}
                   className="font-display italic text-neutral-400 transition-colors hover:text-neutral-900 data-[active=true]:text-neutral-900"
                 >
@@ -50,7 +51,7 @@ export function Nav() {
               </li>
             );
           })}
-        </menu>
+        </ul>
       </div>
     </nav>
   );

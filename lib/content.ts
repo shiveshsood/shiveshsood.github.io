@@ -32,6 +32,7 @@ export interface WorkEntry {
   title: string;
   description: string;
   url?: string;
+  logo?: string;
 }
 
 export interface EducationEntry {
@@ -39,6 +40,7 @@ export interface EducationEntry {
   degree: string;
   date?: string;
   focus?: string;
+  logo?: string;
 }
 
 export interface CVData {

@@ -10,6 +10,7 @@ links:
     external: true
 ---
 
-I'm a Product Manager & Strategist with a penchant for tackling complex problems using technology and thoughtful design. I operate at the intersections of multiple mediums and domains.
+0→1→10 Product Lead, Ex-Founder and Builder. My work centers on applying emerging technologies to solve complex problems. This site is a limited archive of things I've built and written about. 
 
-I'm also a maker with experience building across AI, ClimateTech, Ag and Healthcare domains. I graduated in 2024 from Harvard University's [Master's in Design Engineering](https://www.gsd.harvard.edu/master-in-design-engineering/) program.
+I take pride in craft and judgement — identifying the problems that need solving, prototyping solutions, leading cross-functionally to ship, and framing the solution in ways that resonate with other humans. I have earned battle scars across domains (AI, SaaS, Agriculture + more) and mediums (Hardware & Software).
+

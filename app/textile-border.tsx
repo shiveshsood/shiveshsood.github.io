@@ -3,6 +3,7 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 
 const PATTERNS = ["/patterns/kullu-patti-1.png", "/patterns/kullu-patti-2.png"];
+const TOOLTIP_ID = "textile-border-tooltip";
 
 export function TextileBorder() {
   const [mouseY, setMouseY] = useState<number | null>(null);
@@ -10,12 +11,17 @@ export function TextileBorder() {
   const [patternIndex, setPatternIndex] = useState(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Preload all pattern images so switching is instant
+  // Preload all pattern images so switching is instant + broadcast initial pattern
   useEffect(() => {
     for (const src of PATTERNS) {
       const img = new Image();
       img.src = src;
     }
+    // Defer so we don't update sibling component state during the same render cycle
+    const t = setTimeout(() => {
+      window.dispatchEvent(new CustomEvent("patti-change", { detail: { index: 0 } }));
+    }, 0);
+    return () => clearTimeout(t);
   }, []);
 
   const handleMouseEnter = useCallback(() => {
@@ -34,7 +40,29 @@ export function TextileBorder() {
   }, []);
 
   const handleClick = useCallback(() => {
-    setPatternIndex((i) => (i + 1) % PATTERNS.length);
+    setPatternIndex((i) => {
+      const next = (i + 1) % PATTERNS.length;
+      window.dispatchEvent(new CustomEvent("patti-change", { detail: { index: next } }));
+      return next;
+    });
+  }, []);
+
+  // Keyboard support — mirror hover behavior on focus
+  const handleFocus = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setVisible(true), 120);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setVisible(false);
+  }, []);
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setPatternIndex((i) => (i + 1) % PATTERNS.length);
+    }
   }, []);
 
   return (
@@ -49,10 +77,19 @@ export function TextileBorder() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={handleClick}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="button"
+      aria-label="Decorative textile border inspired by Kullu patti. Press Enter to change pattern."
+      aria-describedby={visible ? TOOLTIP_ID : undefined}
     >
       <div className="relative h-full">
         {mouseY !== null && (
           <div
+            id={TOOLTIP_ID}
+            role="tooltip"
             className="absolute right-full pointer-events-none select-none"
             style={{
               top: mouseY,

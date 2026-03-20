@@ -1,4 +1,5 @@
 import { ImageLightbox } from "./components/image-lightbox";
+import { VisitCounter } from "./components/visit-counter";
 import { getAboutData } from "@/lib/content";
 
 export default async function Home() {
@@ -7,7 +8,7 @@ export default async function Home() {
   return (
     <>
       {/* Profile Photo */}
-      <div className="mb-6">
+      <div className="mb-4">
         <ImageLightbox
           src={about.image}
           alt={about.name}
@@ -19,7 +20,7 @@ export default async function Home() {
       </div>
 
       {/* Name */}
-      <h1 className="mb-4 text-left font-display font-medium text-neutral-900 text-sm">
+      <h1 className="mb-5 text-left font-display font-medium text-neutral-900 text-base tracking-tight">
         {about.name}
       </h1>
 
@@ -32,8 +33,9 @@ export default async function Home() {
       {/* Divider */}
       <hr className="border-neutral-200 my-8" />
 
-      {/* Social Links */}
-      <div className="flex flex-wrap gap-4">
+      {/* Social Links + Location + Visit Counter */}
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2 text-sm">
+        <span className="text-neutral-400">📍 Cambridge, MA</span>
         {about.links.map((link) => (
           <a
             key={link.label}
@@ -46,6 +48,9 @@ export default async function Home() {
             {link.label}
           </a>
         ))}
+        <span className="ml-auto">
+          <VisitCounter />
+        </span>
       </div>
     </>
   );

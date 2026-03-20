@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
-import { createPortal } from "react-dom";
+import * as Dialog from "@radix-ui/react-dialog";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import type { MediaItem } from "@/lib/content";
 
 interface ProjectSlideshowProps {
@@ -26,26 +27,20 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
     [total]
   );
 
-  const closeLightbox = useCallback(() => setLightboxOpen(false), []);
-
-  // Keyboard nav in lightbox
+  // Arrow key navigation within the lightbox (Radix handles Escape)
   useEffect(() => {
     if (!lightboxOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowLeft") prev();
       if (e.key === "ArrowRight") next();
     };
-    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = "";
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [lightboxOpen, closeLightbox, prev, next]);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [lightboxOpen, prev, next]);
 
   return (
     <>
+      {/* Inline carousel */}
       <div className="rounded-sm overflow-hidden border border-neutral-200 relative group">
         {/* Current slide */}
         {current.type === "image" ? (
@@ -140,14 +135,23 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
         )}
       </div>
 
-      {/* Lightbox — images only (videos play inline) */}
-      {lightboxOpen &&
-        current.type === "image" &&
-        createPortal(
-          <div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm"
-            onClick={closeLightbox}
+      {/* Lightbox — Radix Dialog (images only, videos play inline) */}
+      <Dialog.Root
+        open={lightboxOpen && current.type === "image"}
+        onOpenChange={setLightboxOpen}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm" />
+          <Dialog.Content
+            className="fixed inset-0 z-[9999] flex items-center justify-center"
+            onPointerDownOutside={() => setLightboxOpen(false)}
           >
+            <VisuallyHidden.Root>
+              <Dialog.Title>
+                {alt} — image {index + 1} of {total}
+              </Dialog.Title>
+            </VisuallyHidden.Root>
+
             <div
               className="relative max-w-[90vw] max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
@@ -215,17 +219,18 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
               )}
 
               {/* Close button */}
-              <button
-                onClick={closeLightbox}
-                className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-mono transition-colors"
-                aria-label="Close lightbox"
-              >
-                esc
-              </button>
+              <Dialog.Close asChild>
+                <button
+                  className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-mono transition-colors"
+                  aria-label="Close lightbox"
+                >
+                  esc
+                </button>
+              </Dialog.Close>
             </div>
-          </div>,
-          document.body
-        )}
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </>
   );
 }

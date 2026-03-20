@@ -32,7 +32,7 @@ export function VisitCounter() {
       .catch(() => {});
 
     // Fetch visitor geo from ipinfo.io (free, HTTPS, CORS-enabled)
-    fetch("https://ipinfo.io/json?token=")
+    fetch("https://ipinfo.io/json")
       .then((r) => r.json())
       .then((data) => {
         if (data.region && data.country) {
@@ -54,12 +54,9 @@ export function VisitCounter() {
     <span className="tabular-nums select-none text-neutral-400">
       <span>{eyeballs} eyeballs have seen this site</span>
       {geo && (
-        <>
-          {" · "}
-          <span>
-            Latest pair from {geo.region}, {geo.country}
-          </span>
-        </>
+        <span className="block">
+          Latest pair from {geo.region}, {geo.country}
+        </span>
       )}
     </span>
   );

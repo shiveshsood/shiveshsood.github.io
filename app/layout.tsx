@@ -42,7 +42,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Shivesh Sood",
   description:
-    "Award-winning product manager and technologist with an entrepreneurial spirit.",
+    "Product Lead, Ex-Founder and Builder. Applying emerging technologies to solve complex problems across AI, SaaS, Agriculture, and more.",
 };
 
 export default function RootLayout({

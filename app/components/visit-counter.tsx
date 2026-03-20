@@ -31,12 +31,16 @@ export function VisitCounter() {
       })
       .catch(() => {});
 
-    // Fetch visitor geo from free API
-    fetch("https://ipapi.co/json/")
+    // Fetch visitor geo from ipinfo.io (free, HTTPS, CORS-enabled)
+    fetch("https://ipinfo.io/json?token=")
       .then((r) => r.json())
       .then((data) => {
-        if (data.region && data.country_name) {
-          setGeo({ region: data.region, country: data.country_name });
+        if (data.region && data.country) {
+          const countryName =
+            new Intl.DisplayNames(["en"], { type: "region" }).of(
+              data.country
+            ) ?? data.country;
+          setGeo({ region: data.region, country: countryName });
         }
       })
       .catch(() => {});

@@ -6,7 +6,7 @@ tags:
   - "User Research"
   - "Figma"
 date: "May 2021"
-image: "/projects/stayqrious-website.png"
+image: "/projects/stayqrious-website.jpg"
 order: 4
 ---
 

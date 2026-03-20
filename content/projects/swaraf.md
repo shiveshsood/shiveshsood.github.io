@@ -6,7 +6,7 @@ tags:
   - "Product Design"
   - "Business"
 date: "2018 – 2019"
-image: "/projects/swaraf.png"
+image: "/projects/swaraf.jpg"
 order: 5
 ---
 

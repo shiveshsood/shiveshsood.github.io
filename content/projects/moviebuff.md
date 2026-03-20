@@ -7,8 +7,9 @@ tags:
   - "Design"
 date: "February 2026"
 images:
-  - "/projects/moviebuff.png"
-  - "/projects/moviebuff-canvas.png"
+  - "/projects/moviebuff-board.jpg"
+  - "/projects/moviebuff-canvas.jpg"
+  - "/projects/moviebuff.jpg"
 order: 0
 ---
 

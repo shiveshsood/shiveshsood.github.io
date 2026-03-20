@@ -8,7 +8,7 @@ tags:
   - "Image Recognition"
 date: "October 2022"
 images:
-  - "/projects/indigenous-textiles.png"
+  - "/projects/indigenous-textiles.jpg"
 videos:
   - "https://drive.google.com/file/d/1hUfCl1k43CD7fMcbRTp3dJELOTxe5iR9/preview"
 link:

@@ -6,7 +6,7 @@ tags:
   - "User Flows"
   - "Product Analytics"
 date: "July 2021"
-image: "/projects/stayqrious-webinar.png"
+image: "/projects/stayqrious-webinar.jpg"
 order: 3
 ---
 

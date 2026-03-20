@@ -32,12 +32,12 @@ export function ProjectList({ projects }: ProjectListProps) {
 
             {/* Tags */}
             <div className="flex flex-wrap gap-1.5 mb-3">
-              {project.tags.map((tag) => (
+              {project.tags.map((tag, i) => (
                 <span
                   key={tag}
                   className="font-mono text-xs text-neutral-500"
                 >
-                  {tag}
+                  {tag}{i < project.tags.length - 1 && " /"}
                 </span>
               ))}
             </div>

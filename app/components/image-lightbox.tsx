@@ -56,14 +56,26 @@ export function ImageLightbox({
           <VisuallyHidden.Root>
             <Dialog.Title>Enlarged view: {alt}</Dialog.Title>
           </VisuallyHidden.Root>
+          {/* Close button — fixed to viewport top-right so it's always visible */}
           <Dialog.Close asChild>
-            <div className="relative max-w-[90vw] max-h-[90vh]">
+            <button
+              className="fixed top-5 right-5 text-white/70 hover:text-white transition-colors flex items-center gap-2 z-[10000]"
+              aria-label="Close lightbox"
+            >
+              <span className="text-sm font-mono">esc</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </Dialog.Close>
+          <Dialog.Close asChild>
+            <div className="relative max-w-[90vw] max-h-[85vh] cursor-pointer">
               <Image
                 src={src}
                 alt={alt}
                 width={width * 2}
                 height={height * 2}
-                className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-sm"
+                className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-sm"
               />
             </div>
           </Dialog.Close>

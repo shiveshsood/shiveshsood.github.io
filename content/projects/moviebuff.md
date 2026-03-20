@@ -1,14 +1,14 @@
 ---
 title: "MovieBuff"
-category: "Product"
+category: "Side Project"
 tags:
   - "AI"
   - "Next.js"
   - "Design"
 date: "February 2026"
 images:
-  - "/projects/moviebuff.png"
   - "/projects/moviebuff-canvas.png"
+  - "/projects/moviebuff.png"
 order: 0
 ---
 

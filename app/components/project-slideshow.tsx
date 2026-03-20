@@ -72,7 +72,7 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
                 e.stopPropagation();
                 prev();
               }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-7 h-7 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-7 h-7 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white transition-colors duration-200"
               aria-label="Previous"
             >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -90,7 +90,7 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
                 e.stopPropagation();
                 next();
               }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-7 h-7 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm border border-neutral-200 rounded-full w-7 h-7 flex items-center justify-center text-neutral-600 hover:text-neutral-900 hover:bg-white transition-colors duration-200"
               aria-label="Next"
             >
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -152,8 +152,21 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
               </Dialog.Title>
             </VisuallyHidden.Root>
 
+            {/* Close button — fixed to viewport top-right so it's always visible */}
+            <Dialog.Close asChild>
+              <button
+                className="fixed top-5 right-5 text-white/70 hover:text-white transition-colors flex items-center gap-2 z-[10000]"
+                aria-label="Close lightbox"
+              >
+                <span className="text-sm font-mono">esc</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              </button>
+            </Dialog.Close>
+
             <div
-              className="relative max-w-[90vw] max-h-[90vh]"
+              className="relative max-w-[90vw] max-h-[85vh]"
               onClick={(e) => e.stopPropagation()}
             >
               <Image
@@ -161,7 +174,7 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
                 alt={`${alt} — ${index + 1} of ${total}`}
                 width={2000}
                 height={1200}
-                className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-sm"
+                className="max-w-full max-h-[85vh] w-auto h-auto object-contain rounded-sm"
               />
 
               {/* Lightbox arrows */}
@@ -199,35 +212,25 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
                   </button>
                 </>
               )}
-
-              {/* Lightbox dots */}
-              {!single && (
-                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-                  {media.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setIndex(i)}
-                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                        i === index
-                          ? "bg-white scale-110"
-                          : "bg-white/40 hover:bg-white/70"
-                      }`}
-                      aria-label={`Go to slide ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              )}
-
-              {/* Close button */}
-              <Dialog.Close asChild>
-                <button
-                  className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-mono transition-colors"
-                  aria-label="Close lightbox"
-                >
-                  esc
-                </button>
-              </Dialog.Close>
             </div>
+
+            {/* Lightbox dots — fixed to viewport bottom so they're always visible */}
+            {!single && (
+              <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-[10000]">
+                {media.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIndex(i)}
+                    className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                      i === index
+                        ? "bg-white scale-110"
+                        : "bg-white/40 hover:bg-white/70"
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

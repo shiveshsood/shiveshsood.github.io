@@ -6,7 +6,7 @@ tags:
   - "Strategy"
   - "Figma"
 date: "May 2024"
-image: "/projects/thunder.jpg"
+image: "/projects/thunder.png"
 order: 1
 ---
 

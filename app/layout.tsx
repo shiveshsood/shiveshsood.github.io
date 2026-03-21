@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Serif_4, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import { ViewTransitions } from "next-view-transitions";
 import { Nav } from "./nav";
 import { TextileBorder } from "./textile-border";
@@ -64,6 +65,11 @@ export default function RootLayout({
             </main>
           </div>
           <TextileBorder />
+          <Script
+            data-goatcounter="https://shivesh.goatcounter.com/count"
+            src="//gc.zgo.at/count.js"
+            strategy="afterInteractive"
+          />
         </body>
       </html>
     </ViewTransitions>

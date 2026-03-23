@@ -40,9 +40,62 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 
 export const metadata: Metadata = {
-  title: "Shivesh Sood",
+  metadataBase: new URL("https://shivesh.me"),
+  title: {
+    default: "Shivesh Sood — Product Lead, Builder & Ex-Founder",
+    template: "%s | Shivesh Sood",
+  },
   description:
     "Product Lead, Ex-Founder and Builder. Applying emerging technologies to solve complex problems across AI, SaaS, Agriculture, and more.",
+  keywords: [
+    "Shivesh Sood",
+    "Product Manager",
+    "AI Product Lead",
+    "Harvard",
+    "Portfolio",
+    "Builder",
+    "Ex-Founder",
+  ],
+  authors: [{ name: "Shivesh Sood" }],
+  creator: "Shivesh Sood",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://shivesh.me",
+    siteName: "Shivesh Sood",
+    title: "Shivesh Sood — Product Lead, Builder & Ex-Founder",
+    description:
+      "Product Lead, Ex-Founder and Builder. Applying emerging technologies to solve complex problems across AI, SaaS, Agriculture, and more.",
+    images: [
+      {
+        url: "/profile.jpg",
+        width: 400,
+        height: 400,
+        alt: "Shivesh Sood",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Shivesh Sood — Product Lead, Builder & Ex-Founder",
+    description:
+      "Product Lead, Ex-Founder and Builder. Applying emerging technologies to solve complex problems across AI, SaaS, Agriculture, and more.",
+    images: ["/profile.jpg"],
+  },
+  alternates: {
+    canonical: "https://shivesh.me",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

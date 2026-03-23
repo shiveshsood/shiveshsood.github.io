@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import { getWritingData } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Writing",
+  description:
+    "Published writing by Shivesh Sood on product management, technology, design, and building.",
+  alternates: { canonical: "/writing" },
+};
 
 export default async function Writing() {
   const writing = await getWritingData();
 
   return (
     <>
-      <h2 className="font-display text-lg text-neutral-900 mb-6">Writing</h2>
+      <h1 className="font-display text-lg text-neutral-900 mb-6">Writing</h1>
       <div
         className="mb-8 space-y-4 prose-writing"
         dangerouslySetInnerHTML={{ __html: writing.introHtml }}
@@ -21,7 +29,7 @@ export default async function Writing() {
             className="group relative flex justify-between transition-colors hover:text-neutral-900"
           >
             <div className="absolute top-[10px] left-0 w-full border-t border-neutral-300 transition-colors group-hover:border-neutral-900" />
-            <h2 className="relative block bg-neutral-50 pr-2 text-left">
+            <h2 className="relative block bg-neutral-50 pr-2 text-left font-normal">
               {entry.title}
             </h2>
             <time className="relative ml-2 block bg-neutral-50 pl-2 whitespace-nowrap text-neutral-500 transition-colors group-hover:text-neutral-900">

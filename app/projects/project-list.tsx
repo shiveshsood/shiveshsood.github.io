@@ -11,16 +11,16 @@ interface ProjectListProps {
 export function ProjectList({ projects }: ProjectListProps) {
   return (
     <>
-      <h2 className="font-display text-lg text-neutral-900 mb-6">Projects</h2>
+      <h1 className="font-display text-lg text-neutral-900 mb-6">Projects</h1>
       <div className="flex flex-col gap-10">
         {projects.map((project) => (
           <div key={project.title}>
             {/* Header row: title + date */}
             <div className="flex justify-between items-start gap-4 mb-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-semibold text-neutral-900 text-sm">
+                <h2 className="font-semibold text-neutral-900 text-sm">
                   {project.title}
-                </h3>
+                </h2>
                 <span className="font-mono text-xs font-medium text-neutral-700 bg-neutral-150 rounded-md px-2 py-0.5">
                   {project.category}
                 </span>

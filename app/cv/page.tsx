@@ -1,10 +1,19 @@
+import type { Metadata } from "next";
 import { getCVData } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "CV",
+  description:
+    "Shivesh Sood's professional experience, education, and skills — Product Lead at Harvard Business School, Ex-Founder, Software Engineer.",
+  alternates: { canonical: "/cv" },
+};
 
 export default async function CV() {
   const cv = await getCVData();
 
   return (
     <div className="text-left">
+      <h1 className="sr-only">Shivesh Sood — CV</h1>
       {/* Experience */}
       <section>
         <h2 className="font-mono text-xs font-medium tracking-widest uppercase text-neutral-400 mb-5">

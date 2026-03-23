@@ -2,11 +2,41 @@ import { ImageLightbox } from "./components/image-lightbox";
 import { VisitCounter } from "./components/visit-counter";
 import { getAboutData } from "@/lib/content";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Shivesh Sood",
+  url: "https://shivesh.me",
+  image: "https://shivesh.me/profile.jpg",
+  jobTitle: "Lead AI Product Manager",
+  worksFor: {
+    "@type": "Organization",
+    name: "Harvard Business School",
+  },
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "Harvard University",
+    },
+  ],
+  knowsAbout: [
+    "Product Management",
+    "Artificial Intelligence",
+    "SaaS",
+    "Full-Stack Development",
+  ],
+  sameAs: ["https://linkedin.com/in/shiveshsood"],
+};
+
 export default async function Home() {
   const about = await getAboutData();
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Profile Photo */}
       <div className="mb-4">
         <ImageLightbox

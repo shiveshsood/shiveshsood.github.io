@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Link } from "next-view-transitions";
 import { getWritingData } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -20,23 +21,28 @@ export default async function Writing() {
       />
 
       <div className="space-y-1">
-        {writing.writings.map((entry) => (
-          <a
-            key={entry.title}
-            href={entry.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative flex justify-between transition-colors hover:text-neutral-900"
-          >
-            <div className="absolute top-[10px] left-0 w-full border-t border-neutral-300 transition-colors group-hover:border-neutral-900" />
-            <h2 className="relative block bg-neutral-50 pr-2 text-left font-normal">
-              {entry.title}
-            </h2>
-            <time className="relative ml-2 block bg-neutral-50 pl-2 whitespace-nowrap text-neutral-500 transition-colors group-hover:text-neutral-900">
-              {entry.date}
-            </time>
-          </a>
-        ))}
+        {writing.writings.map((entry) => {
+          const isExternal = entry.url.startsWith("http");
+          const Wrapper = isExternal ? "a" : Link;
+          const linkProps = isExternal
+            ? { href: entry.url, target: "_blank" as const, rel: "noopener noreferrer" }
+            : { href: entry.url };
+          return (
+            <Wrapper
+              key={entry.title}
+              {...linkProps}
+              className="group relative flex justify-between transition-colors hover:text-neutral-900"
+            >
+              <div className="absolute top-[10px] left-0 w-full border-t border-neutral-300 transition-colors group-hover:border-neutral-900" />
+              <h2 className="relative block bg-neutral-50 pr-2 text-left font-normal">
+                {entry.title}
+              </h2>
+              <time className="relative ml-2 block bg-neutral-50 pl-2 whitespace-nowrap text-neutral-500 transition-colors group-hover:text-neutral-900">
+                {entry.date}
+              </time>
+            </Wrapper>
+          );
+        })}
       </div>
     </>
   );

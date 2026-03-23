@@ -1,5 +1,8 @@
 ---
 writings:
+  - title: "Rebooting This Website"
+    date: "Mar 2026"
+    url: "/writing/my-new-website"
   - title: "AI Development Guide: Assistants"
     date: "Jan 2026"
     url: "https://store.hbr.org/product/ai-development-guide-assistants-a/826136"

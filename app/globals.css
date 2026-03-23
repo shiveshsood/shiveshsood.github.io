@@ -55,13 +55,15 @@
   margin-top: 1rem;
 }
 
-.prose-about a {
+.prose-about a,
+.prose-writing a {
   text-decoration-line: underline;
   text-underline-offset: 2px;
   transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.prose-about a:hover {
+.prose-about a:hover,
+.prose-writing a:hover {
   color: var(--color-neutral-500);
 }
 

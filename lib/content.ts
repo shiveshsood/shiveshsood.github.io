@@ -132,6 +132,28 @@ export async function getWritingData(): Promise<WritingData> {
   };
 }
 
+export interface WritingArticle {
+  title: string;
+  date: string;
+  description: string;
+  contentHtml: string;
+}
+
+export async function getWritingArticle(slug: string): Promise<WritingArticle> {
+  const raw = fs.readFileSync(
+    path.join(CONTENT_DIR, "writing", `${slug}.md`),
+    "utf-8"
+  );
+  const { data, content } = matter(raw);
+  const contentHtml = await renderMarkdown(content);
+  return {
+    title: data.title,
+    date: data.date,
+    description: data.description,
+    contentHtml,
+  };
+}
+
 export async function getProjects(): Promise<Project[]> {
   const projectsDir = path.join(CONTENT_DIR, "projects");
   const filenames = fs

@@ -1,0 +1,44 @@
+# Shivesh Sood
+
+> Product Lead, Ex-Founder and Builder. Applying emerging technologies to solve complex problems across AI, SaaS, Agriculture, and more.
+
+## About
+
+Shivesh Sood is a Lead AI Product Manager at Harvard Business School Foundry in Cambridge, MA. He specializes in identifying problems, prototyping solutions, leading cross-functionally, and communicating solutions effectively. He has experience across both hardware and software domains.
+
+## Current Role
+
+- Lead AI Product Manager at Harvard Business School Foundry (2024–Present)
+- Led user research, design and product for Agentic AI products
+- Shipped 10+ AI agents and an AI avatar coach with 60% repeat usage
+
+## Education
+
+- Master's in Engineering, Design & Business, Harvard University (2024) — Data Science & AI, Product Management & Strategy, User Research & Design
+- Bachelor's in Electronics Engineering, M.S. Ramaiah Institute of Technology
+
+## Experience
+
+- Harvard Business School Foundry — Lead AI Product Manager (2024–Present)
+- Atomic — Summer Associate, New Products (2023) — $700M+ venture studio, built concepts across ClimateTech, Generative AI, and B2B SaaS
+- StayQrious (YC) — Product Manager (2020–2021) — First product hire, launched 50+ features, drove $1M+ ARR
+- Collins Aerospace — Software Engineer (2019–2020) — Cryptographic libraries with 1000x speedup, 2 patents filed
+- Hyperbloom Agritech — Founder & Product Lead (2017–2019) — Edge AI hardware for farmers, incubated at IIM Bangalore
+
+## Skills
+
+Product Management, Product Strategy, Agentic AI, LLM Evaluation, Python, UI/UX Design, Full-Stack Web Development, Data Science, Figma, User Research, GTM Strategy
+
+## Selected Projects
+
+- MovieBuff (2026) — AI-powered infinite movie discovery canvas
+- Thunder (2024) — Climate data framework and Spatial AI engine for emissions tracking
+- Indigenous Textiles Around the World (2022) — Data visualization with Python, Keras, and image recognition
+- StayQrious Webinar Product (2021) — Webinar platform supporting 5000+ concurrent attendees
+- SWARAF (2018–2019) — Precision agriculture tools for smallholder farmers in India
+
+## Links
+
+- Website: https://shivesh.me
+- LinkedIn: https://linkedin.com/in/shiveshsood
+- Email: shivesh.sood@gmail.com

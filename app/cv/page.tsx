@@ -38,7 +38,7 @@ export default async function CV() {
                   {entry.company.charAt(0)}
                 </div>
               )}
-              <div className="flex flex-1 items-baseline gap-x-4 min-w-0">
+              <div className="flex flex-1 items-baseline gap-x-4 min-w-0 flex-wrap xs:flex-nowrap">
                 <h3 className="text-sm font-semibold text-neutral-900 shrink-0">
                   {entry.url ? (
                     <a
@@ -53,10 +53,10 @@ export default async function CV() {
                     entry.company
                   )}
                 </h3>
-                <span className="text-sm text-neutral-500 truncate hidden xs:inline">
+                <span className="basis-full text-[13px] text-neutral-500 xs:basis-auto xs:text-sm xs:truncate">
                   {entry.title}
                 </span>
-                <span className="tabular-nums text-sm text-neutral-500 ml-auto shrink-0">
+                <span className="basis-full tabular-nums text-[13px] text-neutral-500 xs:basis-auto xs:text-sm xs:ml-auto shrink-0">
                   {entry.date}
                 </span>
               </div>
@@ -85,15 +85,15 @@ export default async function CV() {
                   className="size-6 shrink-0 rounded-sm object-contain"
                 />
               )}
-              <div className="flex flex-1 items-baseline gap-x-4 min-w-0">
+              <div className="flex flex-1 items-baseline gap-x-4 min-w-0 flex-wrap xs:flex-nowrap">
                 <h3 className="text-sm font-semibold text-neutral-900 shrink-0">
                   {entry.school}
                 </h3>
-                <span className="text-sm text-neutral-500 truncate hidden xs:inline">
+                <span className="basis-full text-[13px] text-neutral-500 xs:basis-auto xs:text-sm xs:truncate">
                   {entry.degree}
                 </span>
                 {entry.date && (
-                  <span className="tabular-nums text-sm text-neutral-500 ml-auto shrink-0">
+                  <span className="basis-full tabular-nums text-[13px] text-neutral-500 xs:basis-auto xs:text-sm xs:ml-auto shrink-0">
                     {entry.date}
                   </span>
                 )}

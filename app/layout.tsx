@@ -109,10 +109,10 @@ export default function RootLayout({
         <body
           className={`${sourceSerif.variable} ${instrumentSerif.variable} ${ibmPlexMono.variable} font-serif text-sm text-neutral-900 antialiased relative`}
         >
-          <div className="flex flex-col xs:flex-row bg-neutral-50 min-h-screen p-4 pb-12 xs:p-6 sm:p-12 md:p-24">
+          <div className="flex flex-col xs:flex-row bg-paper min-h-screen p-4 pb-12 xs:p-6 sm:p-12 md:p-24">
             <Nav />
             <main className="relative w-full min-w-0 sm:max-w-2xl text-justify hyphens-auto xs:pl-6 sm:pl-8 md:pl-12">
-              <div className="hidden xs:block absolute top-0 left-0 h-full border-l border-neutral-200" />
+              <div className="hidden xs:block absolute top-0 left-0 h-full border-l border-neutral-400/40" />
               <article className="relative" style={{ viewTransitionName: "content" }}>{children}</article>
             </main>
           </div>

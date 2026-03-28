@@ -14,7 +14,7 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main navigation" className="sticky top-0 z-40 bg-neutral-50 -mx-4 -mt-4 px-4 mb-8 border-b border-neutral-200 pb-4 text-base leading-5 xs:static xs:mx-0 xs:mt-0 xs:px-0 xs:z-auto xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 sm:mr-8 md:mr-12">
+    <nav aria-label="Main navigation" className="sticky top-0 z-40 bg-paper -mx-4 -mt-4 px-4 mb-8 border-b border-neutral-200 pb-4 text-base leading-5 xs:static xs:mx-0 xs:mt-0 xs:px-0 xs:z-auto xs:mr-6 xs:border-none xs:mb-0 xs:pb-0 sm:mr-8 md:mr-12">
       {/* Mobile patti strip */}
       <div
         className="xs:hidden h-4 -mx-4 mb-3 overflow-hidden"

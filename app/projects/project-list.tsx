@@ -21,7 +21,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                 <h2 className="font-semibold text-neutral-900 text-sm">
                   {project.title}
                 </h2>
-                <span className="font-mono text-xs font-medium text-neutral-700 bg-neutral-150 rounded-md px-2 py-0.5">
+                <span className="font-mono text-xs font-medium text-neutral-700 bg-neutral-300/70 rounded-md px-2 py-0.5">
                   {project.category}
                 </span>
               </div>

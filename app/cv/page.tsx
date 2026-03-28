@@ -112,7 +112,7 @@ export default async function CV() {
           {cv.skills.map((skill) => (
             <span
               key={skill}
-              className="inline-flex items-center rounded-md bg-neutral-150 px-2 py-0.5 font-mono text-xs font-medium text-neutral-700"
+              className="inline-flex items-center rounded-md bg-neutral-300/70 px-2 py-0.5 font-mono text-xs font-medium text-neutral-700"
             >
               {skill}
             </span>

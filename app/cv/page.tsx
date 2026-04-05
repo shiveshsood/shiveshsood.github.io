@@ -13,7 +13,7 @@ export default async function CV() {
 
   return (
     <div className="text-left">
-      <h1 className="sr-only">Shivesh Sood — CV</h1>
+      <h1 className="font-display text-lg text-neutral-900 mb-4">CV</h1>
       {/* Experience */}
       <section>
         <h2 className="font-mono text-xs font-medium tracking-widest uppercase text-neutral-400 mb-5">

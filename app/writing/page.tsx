@@ -34,7 +34,7 @@ export default async function Writing() {
               className="group relative flex justify-between transition-colors hover:text-neutral-900"
             >
               <div className="absolute top-[10px] left-0 w-full border-t border-neutral-300 transition-colors group-hover:border-neutral-900" />
-              <h2 className="relative block bg-paper pr-2 text-left font-normal">
+              <h2 className="relative block bg-paper pr-2 text-left font-normal pl-0 transition-[padding] duration-150 group-hover:pl-1">
                 {entry.title}
               </h2>
               <time className="relative ml-2 block bg-paper pl-2 whitespace-nowrap text-neutral-500 transition-colors group-hover:text-neutral-900">

@@ -8,6 +8,7 @@ const links = [
   { href: "/cv", label: "cv" },
   { href: "/writing", label: "writing" },
   { href: "/projects", label: "projects" },
+  { href: "/sandbox", label: "sandbox" },
 ];
 
 export function Nav() {
@@ -39,7 +40,10 @@ export function Nav() {
                 ? pathname === "/"
                 : pathname.startsWith(link.href);
             return (
-              <li key={link.href}>
+              <li
+                key={link.href}
+                className={link.href === "/" ? "hidden xs:block" : undefined}
+              >
                 <Link
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}

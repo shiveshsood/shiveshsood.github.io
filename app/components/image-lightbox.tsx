@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
@@ -23,6 +24,8 @@ export function ImageLightbox({
   locked = false,
   priority = false,
 }: ImageLightboxProps) {
+  const id = useId();
+
   if (locked) {
     return (
       <Image
@@ -52,7 +55,7 @@ export function ImageLightbox({
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm" />
-        <Dialog.Content className="fixed inset-0 z-[9999] flex items-center justify-center cursor-pointer">
+        <Dialog.Content id={id} className="fixed inset-0 z-[9999] flex items-center justify-center cursor-pointer">
           <VisuallyHidden.Root>
             <Dialog.Title>Enlarged view: {alt}</Dialog.Title>
           </VisuallyHidden.Root>

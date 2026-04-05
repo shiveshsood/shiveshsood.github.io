@@ -98,6 +98,10 @@ export async function renderMarkdown(markdown: string): Promise<string> {
   return result.toString();
 }
 
+export interface SandboxProject extends Project {
+  graduated: boolean;
+}
+
 // ─── Content loaders ────────────────────────────────────────────────
 
 export async function getAboutData(): Promise<AboutData> {
@@ -197,6 +201,55 @@ export async function getProjects(): Promise<Project[]> {
         descriptionHtml,
         slug,
       } satisfies Project;
+    })
+  );
+
+  return projects.sort((a, b) => a.order - b.order);
+}
+
+export async function getSandboxProjects(): Promise<SandboxProject[]> {
+  const sandboxDir = path.join(CONTENT_DIR, "sandbox");
+  const filenames = fs
+    .readdirSync(sandboxDir)
+    .filter((f) => f.endsWith(".md"));
+
+  const projects = await Promise.all(
+    filenames.map(async (filename) => {
+      const raw = fs.readFileSync(
+        path.join(sandboxDir, filename),
+        "utf-8"
+      );
+      const { data, content } = matter(raw);
+      const descriptionHtml = await renderMarkdown(content);
+      const slug = filename.replace(/\.md$/, "");
+
+      const media: MediaItem[] = [];
+      const imgs: string[] = data.images
+        ? (data.images as string[])
+        : data.image
+          ? [data.image as string]
+          : [];
+      for (const src of imgs) {
+        media.push({ type: "image", src });
+      }
+      if (data.videos) {
+        for (const src of data.videos as string[]) {
+          media.push({ type: "video", src });
+        }
+      }
+
+      return {
+        title: data.title,
+        category: "Sandbox",
+        tags: data.tags as string[],
+        date: data.date,
+        media,
+        link: data.link as ProjectLink | undefined,
+        order: data.order as number,
+        descriptionHtml,
+        slug,
+        graduated: (data.graduated as boolean) ?? false,
+      } satisfies SandboxProject;
     })
   );
 

@@ -4,7 +4,7 @@ tags:
   - "AI"
   - "Next.js"
   - "LLM Tooling"
-date: "April 2025"
+date: "March 2026"
 images:
   - "/sandbox/evalflow.png"
 order: 0

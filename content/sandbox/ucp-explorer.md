@@ -4,9 +4,9 @@ tags:
   - "AI"
   - "Next.js"
   - "Commerce"
-date: "April 2025"
-images:
-  - "/sandbox/ucp-explorer.png"
+date: "March 2026"
+videos:
+  - "/sandbox/ucp-explorer-demo.webm"
 order: 1
 graduated: false
 ---

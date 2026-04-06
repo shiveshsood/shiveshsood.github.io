@@ -1,6 +1,7 @@
 "use client";
 
 import { ImageLightbox } from "../components/image-lightbox";
+import { VideoLightbox } from "../components/video-lightbox";
 import { ProjectSlideshow } from "../components/project-slideshow";
 import type { SandboxProject } from "@/lib/content";
 
@@ -58,6 +59,15 @@ export function SandboxList({ projects }: SandboxListProps) {
                   alt={project.title}
                   width={1000}
                   height={600}
+                  className="w-full h-auto"
+                />
+              </div>
+            ) : project.media.length === 1 && project.media[0].type === "video" && project.media[0].src.startsWith("/") ? (
+              <div className="rounded-sm overflow-hidden border border-neutral-200">
+                <VideoLightbox
+                  src={project.media[0].src}
+                  alt={project.title}
+                  playbackRate={1.35}
                   className="w-full h-auto"
                 />
               </div>

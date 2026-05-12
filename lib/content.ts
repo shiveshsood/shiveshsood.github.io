@@ -174,19 +174,26 @@ export async function getProjects(): Promise<Project[]> {
       const descriptionHtml = await renderMarkdown(content);
       const slug = filename.replace(/\.md$/, "");
 
-      // Build media array from frontmatter: images, image, and videos fields
+      // Build media array. Prefer explicit `media` array (preserves order).
+      // Fall back to legacy `images` + `videos` (images first, then videos).
       const media: MediaItem[] = [];
-      const imgs: string[] = data.images
-        ? (data.images as string[])
-        : data.image
-          ? [data.image as string]
-          : [];
-      for (const src of imgs) {
-        media.push({ type: "image", src });
-      }
-      if (data.videos) {
-        for (const src of data.videos as string[]) {
-          media.push({ type: "video", src });
+      if (Array.isArray(data.media)) {
+        for (const item of data.media as MediaItem[]) {
+          media.push({ type: item.type, src: item.src });
+        }
+      } else {
+        const imgs: string[] = data.images
+          ? (data.images as string[])
+          : data.image
+            ? [data.image as string]
+            : [];
+        for (const src of imgs) {
+          media.push({ type: "image", src });
+        }
+        if (data.videos) {
+          for (const src of data.videos as string[]) {
+            media.push({ type: "video", src });
+          }
         }
       }
 

@@ -52,6 +52,16 @@ export function ProjectSlideshow({ media, alt }: ProjectSlideshowProps) {
             className="w-full h-auto cursor-pointer"
             onClick={() => setLightboxOpen(true)}
           />
+        ) : /\.(mp4|webm|mov)$/i.test(current.src) ? (
+          <video
+            src={current.src}
+            className="w-full h-auto block"
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls
+          />
         ) : (
           <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
             <iframe

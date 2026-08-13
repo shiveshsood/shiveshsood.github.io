@@ -25,7 +25,11 @@ const jsonLd = {
     "SaaS",
     "Full-Stack Development",
   ],
-  sameAs: [],
+  sameAs: [
+    "https://www.linkedin.com/in/shiveshsood/",
+    "https://github.com/shiveshsood",
+    "https://mde.harvard.edu/shivesh-sood",
+  ],
 };
 
 export default async function Home() {

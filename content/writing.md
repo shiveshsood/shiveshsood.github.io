@@ -1,5 +1,8 @@
 ---
 writings:
+  - title: "Forbes Feature: 6 Lessons From The Harvard Business School AI Project For Founders"
+    date: "Jul 2026"
+    url: "https://www.forbes.com/sites/paulbaier/2026/07/24/six-lessons-from-the-harvard-business-school-ai-project-for-founders/"
   - title: "Rebooting This Website"
     date: "Mar 2026"
     url: "/writing/my-new-website"
